@@ -45,7 +45,9 @@ export default function Booking() {
               Pick a time that works and you&apos;ll get an email to confirm it.
             </p>
             <a
-              href="https://hilary-lucas-counselling.vercel.app/book"
+              href="https://HilaryLucas.as.me/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="mt-auto bg-forest text-cream px-8 py-3 rounded-full font-medium hover:bg-forest-dark transition-colors text-center"
             >
               See Available Times
