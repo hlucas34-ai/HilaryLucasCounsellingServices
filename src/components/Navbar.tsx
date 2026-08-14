@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 const links = [
   { href: '/', label: 'Home' },
@@ -14,11 +15,15 @@ const links = [
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
+  const pathname = usePathname()
 
   return (
-    <nav className="bg-forest text-cream sticky top-0 z-50 shadow-md">
+    <nav className="sticky top-0 z-50 bg-forest/95 backdrop-blur-md text-cream border-b border-forest-dark/70 shadow-[0_12px_32px_-16px_rgba(20,45,20,0.5)]">
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        <Link href="/" className="text-lg font-semibold tracking-wide hover:text-gold-light transition-colors">
+        <Link
+          href="/"
+          className="font-display text-xl font-semibold tracking-wide hover:text-gold-light transition-colors"
+        >
           Hilary Lucas Counselling
         </Link>
 
@@ -28,7 +33,7 @@ export default function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className="hover:text-gold-light transition-colors"
+              className={`nav-link ${pathname === link.href ? 'active' : ''}`}
             >
               {link.label}
             </Link>
@@ -37,7 +42,7 @@ export default function Navbar() {
             href="https://HilaryLucas.as.me/"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-gold text-white px-5 py-2 rounded-full font-medium hover:bg-gold-light transition-colors"
+            className="btn btn-gold px-5 py-2 text-sm"
           >
             Book Now
           </a>
@@ -62,7 +67,7 @@ export default function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className="hover:text-gold-light transition-colors py-1"
+              className={`nav-link w-fit py-1 ${pathname === link.href ? 'active' : ''}`}
               onClick={() => setOpen(false)}
             >
               {link.label}
@@ -72,7 +77,7 @@ export default function Navbar() {
             href="https://HilaryLucas.as.me/"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-gold text-white px-5 py-2 rounded-full font-medium text-center hover:bg-gold-light transition-colors mt-2"
+            className="btn btn-gold px-5 py-2.5 text-center mt-2"
             onClick={() => setOpen(false)}
           >
             Book Now

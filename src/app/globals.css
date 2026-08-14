@@ -4,17 +4,333 @@
   --color-forest: #2C5F2E;
   --color-forest-dark: #1E4220;
   --color-sage: #7A9E7E;
+  --color-sage-dark: #5E8063;
   --color-gold: #C4922A;
+  --color-gold-deep: #96721A;
   --color-gold-light: #DDB96A;
   --color-cream: #FAF6F0;
+  --color-cream-top: #FFFDF8;
   --color-moss: #EBF2E8;
+  --color-ink: #2F3A2C;
+  --color-ink-soft: #57624E;
+}
+
+/* ---------- Base layer ----------
+
+   The warm paper the whole site sits on. Body copy is 18px minimum
+   and set in a warm ink colour (a deep green-grey mixed from the
+   brand greens), never a cold computer grey. */
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background-color: #FAF6F0;
-  color: #2A2A2A;
+  color: #2F3A2C;
+  font-size: 18px;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-playfair), Georgia, serif;
+}
+
+::selection {
+  background: rgba(221, 185, 106, 0.45);
+  color: #1E4220;
+}
+
+:focus-visible {
+  outline: 2px solid #C4922A;
+  outline-offset: 3px;
+}
+
+.font-display {
+  font-family: var(--font-playfair), Georgia, serif;
+}
+
+/* ---------- Buttons ----------
+
+   Every button is a small object sitting on the page: light along its
+   top edge, a soft warm shadow underneath, and it lifts toward the
+   visitor on hover. Nothing flat, nothing instant. */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 0.3s, border-color 0.3s, color 0.3s;
+}
+
+.btn-primary {
+  color: #FAF6F0;
+  background: linear-gradient(180deg, #35703a 0%, #2c5f2e 45%, #255226 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    0 1px 2px rgba(30, 66, 32, 0.28),
+    0 10px 24px -8px rgba(30, 66, 32, 0.45);
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    0 2px 4px rgba(30, 66, 32, 0.24),
+    0 16px 32px -8px rgba(30, 66, 32, 0.5);
+}
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-quiet {
+  color: #1E4220;
+  background: rgba(255, 253, 248, 0.65);
+  border: 1px solid rgba(44, 95, 46, 0.28);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7),
+    0 1px 2px rgba(30, 66, 32, 0.08);
+}
+.btn-quiet:hover {
+  background: #EBF2E8;
+  border-color: rgba(44, 95, 46, 0.45);
+  transform: translateY(-2px);
+}
+
+.btn-gold {
+  color: #1E4220;
+  background: linear-gradient(180deg, #e3c176 0%, #c4922a 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45),
+    0 1px 2px rgba(30, 20, 5, 0.3),
+    0 10px 24px -8px rgba(196, 146, 42, 0.55);
+}
+.btn-gold:hover {
+  transform: translateY(-2px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    0 2px 4px rgba(30, 20, 5, 0.25),
+    0 16px 32px -8px rgba(196, 146, 42, 0.6);
+}
+.btn-gold:active {
+  transform: translateY(0);
+}
+
+/* On the dark green banner, the quiet button becomes a hairline of light. */
+.btn-on-dark {
+  color: #FAF6F0;
+  border: 1px solid rgba(250, 246, 240, 0.4);
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+.btn-on-dark:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(250, 246, 240, 0.65);
+  transform: translateY(-2px);
+}
+
+/* ---------- Cards (How I Can Help) ----------
+
+   Warm lit tiles: a whisper of sage light pooling in the top corner,
+   a bright top edge, and a punchy soft shadow so each card is
+   obviously lifted off the paper. They rise to meet a hover. */
+
+.card-warm {
+  background: radial-gradient(130% 120% at 16% 8%, rgba(122, 158, 126, 0.1), transparent 55%),
+    linear-gradient(158deg, #fffdf8, #fdf9f1);
+  border: 1px solid rgba(122, 158, 126, 0.22);
+  border-radius: 24px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -22px 42px -26px rgba(95, 131, 100, 0.25),
+    0 1px 2px rgba(30, 66, 32, 0.05),
+    0 18px 42px -20px rgba(30, 66, 32, 0.22);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.card-warm:hover {
+  transform: translateY(-6px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -22px 42px -26px rgba(95, 131, 100, 0.22),
+    0 2px 4px rgba(30, 66, 32, 0.06),
+    0 28px 56px -20px rgba(30, 66, 32, 0.3);
+}
+
+.icon-chip {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #2c5f2e;
+  background: radial-gradient(120% 120% at 20% 10%, rgba(255, 253, 248, 0.9), transparent 60%),
+    linear-gradient(150deg, #eaf2e6, #d8e6d3);
+  border: 1px solid rgba(122, 158, 126, 0.35);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.85),
+    0 6px 14px -8px rgba(30, 66, 32, 0.35);
+  transition: background 0.35s, color 0.35s, border-color 0.35s;
+}
+.group:hover .icon-chip {
+  background: linear-gradient(150deg, #35703a, #255226);
+  color: #faf6f0;
+  border-color: rgba(44, 95, 46, 0.6);
+}
+
+/* ---------- Type details ---------- */
+
+/* The small capital introduction line above a heading, with a
+   hand-finished gold rule beside it. */
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #96721a;
+}
+.eyebrow::before {
+  content: "";
+  width: 2rem;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(196, 146, 42, 0.7), rgba(196, 146, 42, 0.15));
+}
+.eyebrow-center {
+  justify-content: center;
+}
+.eyebrow-center::after {
+  content: "";
+  width: 2rem;
+  height: 1px;
+  background: linear-gradient(270deg, rgba(196, 146, 42, 0.7), rgba(196, 146, 42, 0.15));
+}
+
+/* "Learn more" links whose arrow takes one step forward on hover. */
+.link-arrow {
+  color: #96721a;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: color 0.25s;
+}
+.link-arrow:hover {
+  color: #1e4220;
+}
+.link-arrow .arr {
+  display: inline-block;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.link-arrow:hover .arr {
+  transform: translateX(4px);
+}
+
+/* Navigation links with a gold underline that grows in from the left. */
+.nav-link {
+  position: relative;
+  color: rgba(250, 246, 240, 0.82);
+  letter-spacing: 0.02em;
+  transition: color 0.25s;
+  padding-bottom: 2px;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: -3px;
+  height: 1.5px;
+  background: #ddb96a;
+  transition: right 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.nav-link:hover {
+  color: #faf6f0;
+}
+.nav-link:hover::after {
+  right: 0;
+}
+.nav-link.active {
+  color: #ddb96a;
+}
+.nav-link.active::after {
+  right: 0;
+}
+
+/* ---------- The portrait circle (homepage hero) ----------
+
+   Hilary's portrait sits in a round window of layered sage light, the
+   circle's lower curve following the curve of the cutout's own bottom,
+   with a fine gold line traced inside it. */
+
+.arch {
+  position: relative;
+  overflow: hidden;
+  border-radius: 999px;
+  background: radial-gradient(120% 90% at 50% 0%, rgba(255, 253, 248, 0.9), transparent 50%),
+    linear-gradient(170deg, #e4eee0 0%, #cbdcc8 55%, #b7cdb4 100%);
+  box-shadow: inset 0 2px 6px rgba(255, 255, 255, 0.7),
+    inset 0 -30px 60px -30px rgba(44, 95, 46, 0.35),
+    0 2px 6px rgba(30, 66, 32, 0.08),
+    0 30px 60px -18px rgba(30, 66, 32, 0.28);
+}
+.arch-ring {
+  position: absolute;
+  inset: 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(196, 146, 42, 0.4);
+  pointer-events: none;
+  z-index: 3;
+}
+.arch img {
+  filter: drop-shadow(0 18px 28px rgba(30, 66, 32, 0.3));
+}
+
+/* ---------- Atmosphere ---------- */
+
+/* A whisper of paper grain over the hero and the dark banner, so the
+   big colour fields read as lit material rather than flat fills. */
+.grain {
+  position: relative;
+}
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.grain > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* ---------- Gentle entrances ----------
+
+   Sections rise a short distance and settle as the visitor scrolls —
+   nothing appears instantly, nothing pops. Turned fully off for
+   anyone whose system asks for reduced motion. */
+
+/* Without JavaScript, everything is simply visible — the calm
+   entrances are an enhancement, never a gate. The `js` class is set
+   by a one-line script in the page head before first paint. */
+
+html.js .reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+html.js .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  html.js .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
 }

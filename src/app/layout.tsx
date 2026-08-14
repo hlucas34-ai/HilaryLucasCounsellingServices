@@ -2,10 +2,12 @@ import type { Metadata } from "next";
 import { Playfair_Display, Lato } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import Revealer from "@/components/Revealer";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
   subsets: ["latin"],
+  style: ["normal", "italic"],
   display: "swap",
 });
 
@@ -28,21 +30,32 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        {/* Marks that JavaScript is running, before first paint, so the
+            gentle scroll-entrance styles can hide their starting state.
+            Without JS the page is simply fully visible. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: "document.documentElement.classList.add('js')",
+          }}
+        />
+      </head>
       <body className={`${playfair.variable} ${lato.variable} font-[family-name:var(--font-lato)] antialiased`}>
         <Navbar />
+        <Revealer />
         {children}
-        <footer className="bg-forest-dark text-cream">
-          <div className="max-w-6xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+        <footer className="bg-forest-dark text-cream border-t border-gold/15">
+          <div className="max-w-6xl mx-auto px-6 py-14 grid grid-cols-1 md:grid-cols-3 gap-10">
             <div>
-              <h3 className="text-lg font-semibold mb-3">Hilary Lucas Counselling</h3>
-              <p className="text-sm text-cream/70 leading-relaxed">
+              <h3 className="text-xl font-semibold mb-3 text-cream">Hilary Lucas Counselling</h3>
+              <p className="text-[15px] text-cream/70 leading-relaxed">
                 Compassionate, neurodiversity-affirming counselling for youth and adults in Alberta.
               </p>
             </div>
             <div>
-              <h3 className="text-lg font-semibold mb-3">Quick Links</h3>
-              <ul className="text-sm text-cream/70 space-y-2">
+              <h3 className="text-xl font-semibold mb-3 text-cream">Quick Links</h3>
+              <ul className="text-[15px] text-cream/70 space-y-2.5">
                 <li><a href="/about" className="hover:text-gold-light transition-colors">About</a></li>
                 <li><a href="/services" className="hover:text-gold-light transition-colors">Services</a></li>
                 <li><a href="/groups" className="hover:text-gold-light transition-colors">Groups & Workshops</a></li>
@@ -51,8 +64,8 @@ export default function RootLayout({
               </ul>
             </div>
             <div>
-              <h3 className="text-lg font-semibold mb-3">Book a Session</h3>
-              <div className="text-sm text-cream/70 space-y-3">
+              <h3 className="text-xl font-semibold mb-3 text-cream">Book a Session</h3>
+              <div className="text-[15px] text-cream/70 space-y-4">
                 <div>
                   <p className="font-medium text-cream mb-1">Virtual — Alberta-wide</p>
                   <a
@@ -78,7 +91,7 @@ export default function RootLayout({
               </div>
             </div>
           </div>
-          <div className="border-t border-white/10 text-center text-xs text-cream/40 py-4">
+          <div className="border-t border-white/10 text-center text-xs text-cream/50 py-5">
             © {new Date().getFullYear()} Hilary Lucas Counselling Services. All rights reserved.
           </div>
         </footer>
