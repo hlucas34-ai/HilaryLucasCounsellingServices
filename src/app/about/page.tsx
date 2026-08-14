@@ -51,13 +51,14 @@ export default function About() {
           </div>
 
           <div className="flex-1 flex justify-center">
-            <div className="w-80 h-96 rounded-2xl overflow-hidden shadow-lg">
+            <div className="portrait w-[18rem] md:w-[22rem] aspect-square">
+              <div className="portrait-ring" aria-hidden />
               <Image
-                src="/hilary-photo.jpg"
+                src="/hilary-portrait.webp"
                 alt="Hilary Lucas, Counsellor"
-                width={320}
-                height={384}
-                className="w-full h-full object-cover object-top"
+                fill
+                sizes="(min-width: 768px) 22rem, 18rem"
+                className="object-contain object-bottom"
                 priority
               />
             </div>

@@ -17,6 +17,13 @@ const BOX: Phase[] = [
   { label: "Hold", seconds: 4, scale: 0.55 },
 ];
 
+// 7-11: no hold, and the out-breath runs well past the in-breath. The long
+// exhale is the whole mechanism, so the pacer must not round it down.
+const SEVEN_ELEVEN: Phase[] = [
+  { label: "Breathe in", seconds: 7, scale: 1 },
+  { label: "Breathe out", seconds: 11, scale: 0.55 },
+];
+
 const GROUNDING = [
   { count: "Five", sense: "things you can see", hint: "Look around slowly. Name them, out loud if you can." },
   { count: "Four", sense: "things you can feel", hint: "The chair, your feet on the floor, fabric, temperature." },
@@ -150,6 +157,7 @@ const TOOLS = [
   { key: "breathe", name: "Breathing", blurb: "In for four, out for six. Longer out-breaths settle the nervous system." },
   { key: "ground", name: "Grounding", blurb: "Five senses, one at a time, to bring you back into the room." },
   { key: "box", name: "Box breathing", blurb: "Four counts each way. Steady and even, for anxious moments." },
+  { key: "sevenEleven", name: "7-11 breathing", blurb: "In for seven, out for eleven. A slower pace, for when you have a minute to settle." },
 ];
 
 export default function Regulation() {
@@ -173,7 +181,7 @@ export default function Regulation() {
       </section>
 
       <section className="bg-moss py-12 px-6">
-        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
           {TOOLS.map((t) => {
             const active = tool === t.key;
             return (
@@ -200,6 +208,7 @@ export default function Regulation() {
         <div className="max-w-3xl mx-auto">
           {tool === "breathe" && <Pacer phases={BREATHE} tone="bg-forest" />}
           {tool === "box" && <Pacer phases={BOX} tone="bg-sage" />}
+          {tool === "sevenEleven" && <Pacer phases={SEVEN_ELEVEN} tone="bg-sage-dark" />}
           {tool === "ground" && <Grounding />}
         </div>
       </section>

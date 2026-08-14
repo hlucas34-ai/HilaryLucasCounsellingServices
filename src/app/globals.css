@@ -262,7 +262,7 @@ h1, h2, h3, h4, h5, h6 {
    circle's lower curve following the curve of the cutout's own bottom,
    with a fine gold line traced inside it. */
 
-.arch {
+.portrait {
   position: relative;
   overflow: hidden;
   border-radius: 999px;
@@ -273,7 +273,7 @@ h1, h2, h3, h4, h5, h6 {
     0 2px 6px rgba(30, 66, 32, 0.08),
     0 30px 60px -18px rgba(30, 66, 32, 0.28);
 }
-.arch-ring {
+.portrait-ring {
   position: absolute;
   inset: 14px;
   border-radius: 999px;
@@ -281,7 +281,7 @@ h1, h2, h3, h4, h5, h6 {
   pointer-events: none;
   z-index: 3;
 }
-.arch img {
+.portrait img {
   filter: drop-shadow(0 18px 28px rgba(30, 66, 32, 0.3));
 }
 

@@ -74,7 +74,7 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Portrait — Hilary standing in an arched window of sage light */}
+          {/* Portrait — Hilary in a round window of sage light */}
           <div className="flex-1 flex justify-center reveal" style={{ transitionDelay: "150ms" }}>
             <div className="relative">
               <div
@@ -85,8 +85,8 @@ export default function Home() {
                   filter: "blur(24px)",
                 }}
               />
-              <div className="arch w-[20rem] md:w-[24rem] aspect-square">
-                <div className="arch-ring" aria-hidden />
+              <div className="portrait w-[20rem] md:w-[24rem] aspect-square">
+                <div className="portrait-ring" aria-hidden />
                 <Image
                   src="/hilary-portrait.webp"
                   alt="Hilary Lucas, Counsellor"
